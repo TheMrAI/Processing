@@ -1,19 +1,19 @@
 ## p5.js szerkesztő
 
 ### Felület
-Nyissuk meg a [p5 Web Editor](https://editor.p5js.org/)
+Nyissuk meg a [p5 Web Editor](https://editor.p5js.org/)-t:
 
 ![Kezdő képernyő](default_screen.PNG)
 
 Így néz ki maga a [p5 Web Editor](https://editor.p5js.org/). Három fő része van
-a felületnek. Maga a szövegszerkesztő (Editor) ahova magát a kódot írjuk. Tőle jobbra
-egy *Preview* felirattal jelzett jelenleg még szürke négyzet ahol majd a programunk
-vizuális eredményét tudjuk majd megfigyelni. Illetve alul helyezkedik el a konzol (Console) ahol a szöveges kimenteket tudjuk majd megfigyelni. Itt fog megjelenni minden esetleges hiba amit a program írása során vétettünk.
+a felületnek. A szövegszerkesztő (Editor), ahova magát a kódot írjuk. Tőle jobbra
+egy *Preview* felirattal jelzett, jelenleg még szürke négyzet, ahol majd a programunk
+vizuális eredményét tudjuk megfigyelni. Illetve alul helyezkedik el a konzol (Console), ahol a szöveges kimenteket tudjuk majd megfigyelni. Itt fog megjelenni minden esetleges, hiba amit a program írása során vétettünk.
 
-Ha pedig a programunkat szeretnénk kipróbálni akkor azt a fenti Play gombbal tudjuk elindítani és a Stop gombbal leállítani.
+Ha pedig a programunkat szeretnénk kipróbálni, akkor azt a fenti Play gombbal tudjuk elindítani és a Stop gombbal leállítani.
 
 ### Alap program struktúra
-Ahogy látjuk alapvetően két függvényünk van a kezdő programban megírva. A setup és a draw.
+Ahogy látjuk, alapvetően két függvényünk van a kezdő programban megírva. A _setup_ és a _draw_.
 ```JavaScript
 function setup() {
   createCanvas(400, 400);
@@ -23,12 +23,12 @@ function draw() {
   background(220);
 }
 ```
-Mit is csinálnak? Röviden a **setup** függvénybe fog minden olyan utasítás kerülni
+Mit is csinálnak? Röviden a **setup** függvénybe fog minden olyan utasítás kerülni,
 amit a program kezdetekor szeretnénk egyszer végrehajtani.
-A **draw**-ba minden egyéb amit pedig minden rajzolási körben újra és újra meg
+A **draw**-ba minden egyéb, amit pedig minden rajzolási körben újra és újra meg
 szeretnénk csinálni.
 
-Próbáljuk ki mit is jelent ez. A **draw** függvény nélkül hogy viselkedik az alábbi:
+Próbáljuk ki, mit is jelent ez. A **draw** függvény nélkül hogyan viselkedik az alábbi:
 ```JavaScript
 function setup() {
   createCanvas(400, 400);
@@ -36,10 +36,10 @@ function setup() {
   line(200, 200, mouseX, mouseY);
 }
 ```
-Azt látjuk, hogy keletkezett egy 400 pixel széles és magas ablak. Aminek a háttér színét közepes erősségű szürkére állítottuk. Majd rajzoltattunk egy vonalat a (200, 200)-as pontból az egér aktuális helyzetéig. De ezzel valami nincs rendjén!
-Az egerünk nem is ott van amikor elindítjuk és nem is csak egy statikus képet szeretnénk látni.
+Azt látjuk, hogy keletkezett egy 400 pixel széles és magas ablak, aminek a háttérszínét közepes erősségű szürkére állítottuk. Majd rajzoltattunk egy vonalat a (200, 200)-as pontból az egér aktuális helyzetéig. De ezzel valami nincs rendjén!
+Az egerünk nem is ott van, amikor elindítjuk, és nem is csak egy statikus képet szeretnénk látni.
 
-Mozgassuk át egy kicsit a kódot és nézzük meg mi lesz ha a már a draw függvényben
+Mozgassuk át egy kicsit a kódot, és nézzük meg mi lesz, ha a már a _draw_ függvényben
 állítjuk be a hátteret és rajzolunk ki egy vonalat.
 
 ```JavaScript
@@ -54,12 +54,12 @@ function draw() {
 ```
 
 Ez mindjárt jobb! A vonal követi az egér helyzetét és nem csak egy sima képet látunk.
-Ahogy látjuk bár meg tudjuk ugyan azt csinálni mind a két függvényben, az nem ugyan azt az eredményt fogja hozni. Egy közepes túlzással úgy is tekinthetünk a **setup**-ra
-mint ami meghatározza hogy nézzen ki a program felülete, mint például a képernyő mérete.
-Míg a **draw**-ra mint ami leírja mi jelenyen meg minden kirajzoláskor azon a felületen.
+Ahogy látjuk, bár meg tudjuk ugyanazt csinálni mind a két függvényben, az nem ugyanazt az eredményt fogja hozni. Egy közepes túlzással úgy is tekinthetünk a **setup**-ra,
+mint ami meghatározza, hogy nézzen ki a program felülete, mint például a képernyő mérete.
+Míg a **draw**-ra, mint ami leírja, mi jelenjen meg minden kirajzoláskor azon a felületen.
 
 ### Koordináta rendszer és a konzol
-Mivel elsődleges célunk valami megjelenítése lesz. Érdemes tisztában lennünk a koordináta rendszerrel amit a Processing használ.
+Mivel elsődleges célunk valaminek a megjelenítése lesz, érdemes tisztában lennünk a koordináta rendszerrel, amit a **Processing** használ.
 
 Erre kísérletezésképpen az alábbi program kiváló:
 ```JavaScript
@@ -74,7 +74,7 @@ function draw() {
 }
 ```
 Az előbbihez képest csak annyit változtattunk, hogy kiírjuk az egér aktuális helyzetének X és Y koordinátáit a konzolra.
-Figyeljük meg hogy változnak az értékek a Console-on:
+Figyeljük meg, hogy változnak az értékek a Console-on:
 
 ![Konzol](console_example.PNG)
 
@@ -83,7 +83,7 @@ Figyeljük meg hogy változnak az értékek a Console-on:
  - Bal alsó: x: 0, y: 400
  - Jobb alsó: x: 400, y: 400
 
-Itt a koordináta rendszer majdnem olyan mint a matematikából megszokott Descartes féle. Csak trükkösen meg van egy kicsit csavarva és az **y** tengely fejjel lefelé áll. Erre mindig érdemes emlékeztetnünk magunkat, mert könnyen kimehet a fejünkből és hosszas percek mehetnek el a hibakutatással.
+Itt a koordináta rendszer majdnem olyan, mint a matematikából megszokott Descartes féle. Csak trükkösen meg van egy kicsit csavarva és az **y** tengely fejjel lefelé áll. Erre mindig érdemes emlékeztetnünk magunkat, mert könnyen kimehet a fejünkből és hosszas percek mehetnek el a hibakutatással.
 
 A konzol pedig a nagy barátunk! Amikor nem vagyunk biztosak egy változó pillanatnyi értékében azt érdemes kiíratni a képernyőre. A legkönnyebben ezt pedig a konzol segítségével lehet. Erre a **print** függvény a legegyszerűbb eszköz.
 
@@ -110,10 +110,10 @@ function draw() {
  }
 }
 ```
-Ha minden igaz valami ilyesmit kéne látnunk:
+Ha minden igaz, valami ilyesmit kéne látnunk:
 ![Koncentrikus körök](concentrical_circles.PNG)
 
-Miután kipróbáltuk a kódot és láttuk mi történik próbáljuk meg az egyes részleteket
+Miután kipróbáltuk a kódot és láttuk, mi történik, próbáljuk meg az egyes részleteket
 módosítani. Törölgessünk ki belőle sorokat. Mik történnek? Próbáljuk meg módosítani
 valamilyen egyéb módon.
 Például:
@@ -121,4 +121,4 @@ Például:
 3. Mi lesz ha kitörüljük a **background(220)** sort?
 3. Növeljük meg a koncentrikus körök távolságát
 4. Toljuk el az origót
-5. Meg tudjuk e mondani hogy keletkeznek a színek
+5. Meg tudjuk-e mondani, hogyan keletkeznek a színek
