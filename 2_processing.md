@@ -134,8 +134,8 @@ Mindig a megfelelő referenciát kutassuk:
  - [Processing Reference](https://processing.org/reference/)
  - [p5.js Reference](https://p5js.org/reference/)
 
- ### Hogyan tovább
- Most, hogy tudjuk mi a **Processing** és mi a **p5.js**, és mik a különbségek köztük, csináljunk
- is végre valamit.
+### Hogyan tovább
+Most, hogy tudjuk mi a **Processing** és mi a **p5.js**, és mik a különbségek köztük, csináljunk
+is végre valamit.
 
- [Példaprogram és a szerkesztő](3_editor.md)
+[Alapok](1_alapok.md) - [Példaprogram és a szerkesztő](3_editor.md)
