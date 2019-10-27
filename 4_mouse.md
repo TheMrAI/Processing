@@ -123,3 +123,76 @@ let mouseX = "Krumpli";
 Ezt érdemes észben tartani ha valami nem úgy akar viselkedni ahogy az a referenciában le van írva. Könnyen lehet véletlenül átdefiniáltuk a változót.
 
 ### Események (Events)
+
+Eddig még nem volt szó az eseményekről. Lényegében egy *event* nem más mint egy olyan
+függvény amit egy adott helyzet hatására egy külső kód meghív. Ilyen a draw függvény is. Mi leírjük bele mit szeretnénk csinálni amikor a rajzolás esemény zajlik és az fog történni. A p5.js számos dolgot csinál a háttérben amiről nekünk nem kell tudnunk. Csak azt szeretnénk tudni mikor van épp a rajzolás ideje és mit is szeretnénk azzal kezdeni.
+
+Ezzel analóg módon viselkedik minden egér esemény:
+- **mouseMoved** - Az egér elmozdult.
+- **mouseDragged** - Az egér elmozdult miközben le volt nyomva valamelyik gombja.
+- **mousePressed** - Az egér valamelyik gombja lenyomásra került.
+- **mouseReleased** - Az egér valamelyik korábban lenyomott gombja felengedésre került.
+- **mouseClicked** - Az egér valamelyik gombja le lett nyomva és utána fel is lett engedve.
+- **doubledClicked** - Az egér valamelyik gombja kétszer lett kattintva.
+- **mouseWheel** - Az egér görgője helyzetet változtatott.
+
+Nem minden esemény működik minden böngészővel. Nekem például se Firefox se Google Chrome alatt nem működött a **doubleClicked** esemény.
+
+Hogyan használjunk hát egy eseményt? Egyszerűen csak írjunk egy függvényt aminek
+a tetszőleges esemény a neve és olyan paramétereket vesz át mint ahogy az a referenciában le van írva. Például **mouseMoved** paraméter nélkül:
+```JavaScript
+function mouseMoved(){
+  print("mouseMoved");
+}
+```
+és **mouseMoved** paraméterrel:
+```JavaScript
+function mouseMoved(){
+  print(event);
+}
+```
+
+Semmi egyéb dolgunk nincs, ugyanis a p5.js számít ezekre a függvényekre, így csak le kell írnunk minek kéne történnie.
+
+Mivel elég helyzet függőek maguk az események ezért nem demonstráljuk mit csinál az összes. Emelet kevés gyakorlati különbség van a **mousePressed**, **mouseReleased** és a **mouseClicked** között.
+
+Nézzünk egy kisebb példát ahol használjuk a **mousePressed** és a **mouseWheel** eseményeket.
+
+```JavaScript
+function setup() {
+  createCanvas(400, 400);
+  fill(0);
+}
+
+let keepDrawing = false;
+let diameter = 10;
+
+function draw() {
+  if(!keepDrawing){
+    background(220);
+  }
+  circle(mouseX, mouseY, diameter);
+}
+
+function mousePressed(){
+  keepDrawing = !keepDrawing;
+}
+
+function mouseWheel(event){
+  diameter += event.delta;
+}
+```
+
+A görgőt görgetve változik a kör átmérője. Míg klikkeléskor be vagy épp kikapcsoljuk a
+képernyő "törlését". Így olyan hatást érünk el mintha rajzolnánk.
+Ahogy látjuk a **mouseWheel** esemény átvesz egy paramétert amiből ki tudjuk olvasni
+hogyan változott a *delta* értéke, amivel módosítjuk a kör átmérőjét. Ha esetleg nincs leírva milyen információt kaphatunk egy esemény adott paraméterétől azt érdemes lehet kiírni és akkor láthatjuk mit is érünk el. Például a görgő paramétere kiírva
+```
+WheelEvent {isTrusted: true, delta: 3, constructor: Object}
+isTrusted: true
+delta: 3
+<constructor>: "WheelEvent"
+```
+Innen láthatjuk van egy delta nevű változónk ami görgetéskor változtatja az aktuális értékét.
+
+[Példaprogram és a szerkesztő](3_editor.md)
