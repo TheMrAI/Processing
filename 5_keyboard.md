@@ -35,10 +35,10 @@ function draw() {
 ```
 
 A *key*-ben mindig megjelenik az aktuális billentyű a megszokott szöveges formában
-Pl.: a, b, Shift, ArrowUp.
+Pl.: a, b, C, D.
 
 A *keyCode* pedig egy szám kódot ír ki minden billentyűre, például a fenti billentyűkhöz:
-65, 66, 16, 38.
+65, 66, 67, 68.
 
 Érdekes módon ha lenyomjuk a Shift-et és közben írunk valamit akkor látjuk, igen ahogy megszoktuk
 nagy betűt látunk a *key*-ben, de a *keyCode* ugyan az maradt! Miért van ez?
@@ -83,12 +83,113 @@ A fenti példában pontosan ugyan azokat a fizikai billentyűket nyomtam le mind
 nyelvi beállításnál. Valahol ott volna ugyan az a fizikai gomb mint a két nyelvnél
 valahol nem. Ettől függően vagy ugyanaz a *keyCode* vagy nem.
 
-Ezzel a hétköznapokban nem kell foglalkoznunk. Ezt a gép mind elvfedi eldőlünk.
+Ezzel a hétköznapokban nem kell foglalkoznunk. Ezt a gép mind elfedi eldőlünk.
 Viszont érdemes észben tartanunk ha valamilyen problémába ütközünk ami nem tűnik
 lehetségesnek.
 
 ### Események (Events)
- - **keyPressed()**
- - **keyReleased()**
- - **keyTyped()**
- - **keyIsDown()**
+ - **keyPressed()** - Egy billentyű le lett nyomva.
+ - **keyReleased()** - Egy billentyű fel lett engedve.
+ - **keyTyped()** - Egy billentyű le lett nyomva amelyik nem: Backspace, Delete,
+ Ctrl, Shift, vagy az Alt.
+
+Nézzük meg mi történik ha lenyomjuk, lenyomva tartjuk az: a, Shift vagy a felfele
+nyíl gombokat.
+
+```JavaScript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  if(keyIsPressed){
+    print("key: " + key + " keyCode: " + keyCode);
+  }
+}
+
+function keyPressed(){
+  print("Pressed: " + key)
+}
+
+function keyReleased(){
+  print("Released: " + key)
+}
+
+function keyTyped(){
+  print("Typed: " + key)
+}
+```
+
+A *draw*-ban lévő *print* folyamatosan írja ki a gombokat ha lenyomva tartjuk őket, ráadásul
+annyiszor írja ki ahányszor új kép rajzolódik.
+Ezzel szemben a **keyPressed()**, **keyReleased()**, **keyTyped()** csak akkor írja ki, egyszer, az adott
+billentyűt ha megtörtént hozzá az adott esemény. A referencia szerint ez nem garantált
+viselkedés. Így nem számíthatunk rá minden esetben csak egyszer hívódik meg a fenti
+három függvény valamelyike.
+
+ ### Függvények (Functions)
+ - **keyIsDown()** - Egy megadott billentyű le van e nyomva.
+
+Főleg akkor lesz hasznos ha azt szeretnénk tudni, hogy egyszere több billentyű le
+lett e nyomva vagy sem.
+Az alábbi példa csak akkor fogja kiírni a szöveget ha az "a" és 'd' billentyűket
+egyszerre le vannak nyomva.
+
+```JavaScript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  if(keyIsDown(65) && keyIsDown(68)){
+    print("key: " + key + " keyCode: " + keyCode);
+  }
+}
+```
+
+Megfigyelhetjük, hogy ugyan azt nézzük le van e nyomva két billentyű egyszerre a
+kiírásnál sokszor azt látjuk mintha csak egy karakter lenne lenyomva.
+Ez a globális változók miatt van. A *key* és a *keyCode* értékét tekintve csak annyit
+garantál a p5.js, hogy azok egy adott **keyPressed()**, **keyReleased()**, **keyTyped()**
+hívás elött frissülnek. Viszont milyen sorrendben, vagy a *draw* függvény elött vagy
+után már nincs.
+
+#### ASCII és speciális billentyűk
+Ha a p5.js referenciáját nézzük, többször is összefuthatunk a "special key" és "ASCII characters"
+megnevezésekkel.
+
+A speciális billentyűk *keyCode*-jai:
+- BACKSPACE
+- DELETE
+- ENTER
+- RETURN
+- TAP
+- ESCAPE
+- SHIFT
+- CONTROL
+- OPTION
+- ALT
+- UP_ARROW
+- DOWN_ARROW
+- LEFT_ARROW
+- RIGHT_ARROW
+
+A referencia azt javasolja ezeket a *keyCode*-okat érdemes figyelnünk ha a hozzájuk tartozó
+billentyű lenyomását figyeljük. Egyébként ha ASCII billentyűket figyelünk akkor a
+*key* változó fogja az elvárt karaktert tartalmazni így olyankor érdemes azt követnünk.
+
+Az [ASCII](http://www.asciitable.com/) karaktereket még réges-régen találták ki és
+128-an vannak. A miért pont 128-an, nem fontos. Ami fontos, hogy ugyan a p5.js referencia
+[ASCII](http://www.asciitable.com/) karaktereknek hívja őket nem ezekre gondol.
+Mint látjuk ezeknek más a kódjuk és jelen vannak olyan karakterek is amikről az előbb
+még azt mondtuk speciálisak. Sőt olyanok
+is, amelyeket amúgy kézzel nem is tudunk begépelni, mint pl.: NUL, SOH, STX. Továbbá
+ezeket ha be tudnánk írni se látnánk őket, mert nem megjeleníthetőek. :)
+A p5.js referencia ASCII karakterek alatt a sima szövegesen megjeleníthető hétköznapi
+karaktereket érti. Ilyen az abc összes betűje, számok, + - * / és minden egyéb jel
+amit a fenti speciális karaktereken kívül lenyomva, lényegében ugyan azt látjuk a képernyőn
+mint ami a fizikai billentyűre rá van nyomtatva pl.: #, &, @.
+
+[Egér kezelés](4_mouse.md)
