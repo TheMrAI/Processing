@@ -1,4 +1,4 @@
-## Programozás alapjai
+## Billentyűzet
 
 A billentyűzet is elengedhetetlen része a számítógépeknek. Az idők kezdetén
 amikor még csak zsenik és az ufók értettek a számítástechnikához, na akkor is,
