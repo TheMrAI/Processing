@@ -195,4 +195,4 @@ delta: 3
 ```
 Innen láthatjuk van egy delta nevű változónk ami görgetéskor változtatja az aktuális értékét.
 
-[Példaprogram és a szerkesztő](3_editor.md)
+[Példaprogram és a szerkesztő](3_editor.md) - [Billentyűzet](5_keyboard.md)
