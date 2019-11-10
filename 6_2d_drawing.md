@@ -16,7 +16,7 @@ színét határozhatja meg, de legegyszerűbb így elképzelni őket.
 ### createCanvas
 
 [Ez](https://p5js.org/reference/#/p5/createCanvas) lesz a függvény amit mindig pontosan egyszer
-meg kell hívnunk a programunk elején, ha bármit is ki szeretnénk rajzolni a képernyőre.
+meg kell hívnunk a programunk elején, mielőtt bármit is ki szeretnénk rajzolni a képernyőre.
 
 ```JavaScript
 createCanvas(width, height, [renderer])
@@ -43,14 +43,15 @@ Három fő értelmezés áll rendelkezésünkre:
 - HSB
 - HSL
 
-Mind a három közül az RGB messze a leggyakrabban használt mód, így ez is az alapértelmezett szín mód a p5.js-ben. A másik kettő teljesen másféleképpen kezeli a színeket és a hétköznapokban nem
+Mind a három közül az RGB messze a leggyakrabban használt mód, így ez is az alapértelmezett is
+a p5.js-ben. A másik kettő teljesen másféleképpen kezeli a színeket és a hétköznapokban nem
 lesz rájuk különösebb szükségünk, így ezek felkutatását az olvasóra bízzuk.
 
 Az **RGB** színteret és az általa leírható színeket is gyakran szokás **RGB**-nek hívni.
 Elemei:
-- **R** - red, piros szín, értéktartománya: 0 - 255
-- **G** - green, zöld szín, értéktartománya: 0 - 255
-- **B** - blue, kék szín, értéktartománya: 0 - 255
+- **R** - red, piros komponens, értéktartománya: 0 - 255
+- **G** - green, zöld komponens, értéktartománya: 0 - 255
+- **B** - blue, kék komponens, értéktartománya: 0 - 255
 
 Ahol a *0* jelenti a szín teljes hiányát míg a *255* a maximális intenzitását.
 Ezeknek az értékeknek a pontos beállításával kb 16 millió szín előállítására leszünk
@@ -67,30 +68,68 @@ a meghatározott színt teljes egészében megtartja.
 
 Szineket lényegében 3 féleképpen tudunk megadni azokon a helyeken ahol az elvárt.
 - 1 vagy 2 értékkel
+
 Ilyenkor a szürke 256 árnyalata között állítjuk be az értéket. Ahol *0* a fekete
 , míg *255* a fehér lesz. Az opcionális másodlagos paraméter pedig ennek az árnyalatnak
 az *alpha* értéke lesz.
+```JavaScript
+background(56);
+```
+```JavaScript
+background(56, 125);
+```
 - 3 vagy 4 értékkel
 
+Ebben az esetben megadjuk a szín minden egyes elemét. Az alkalmazott színtértől függ
+pontosan mit fog a három paraméter jelenteni. **RGB** esetén a piros, zöld és kék
+komponenseket és az opcionális alpha értéket.
+```JavaScript
+background(153, 153, 0);
+```
+```JavaScript
+background(253, 216, 53, 50);
+```
+
+Amennyiben **RGB** színtérrel dolgozunk és mind a piros, zöld és kék komponens intenzitását
+ugyan azon az értéken tartjuk, úgy visszakapjuk a szürke árnyalatait. Ilyen esetekben
+jóval kényelmesebb az ehhez tartozó specializációt használni.
+```JavaScript
+background(56, 56, 56);
+```
+
 - p5.Color objektummal
+
+A p5.js beépített szín osztálya amelyben bármely színt el tudunk tárolni.
+Létrehozásához csupán a **color()** függvényt kell meghívnunk a fentebb leírt
+módszerek egyikével.
+```JavaScript
+let ultramarine_blue = color(18, 10, 143);
+```
 
 Példa:
 ```JavaScript
 function setup() {
   createCanvas(400, 400);
-  noStroke();
 }
 
 function draw() {
-  background(253, 216, 53);
+  stroke(166);
+  line(50, 350, 350, 50);
+  noStroke();
+  background(253, 216, 53, 50);
   let rectangle_color = color(194, 24, 91);
   fill(rectangle_color);
   rect(50, 50, 100, 100);
   let circle_color = color(41, 182, 246, 128);
   fill(circle_color)
   circle(200, 200, 300);
+  let triangle_color = color(18, 10, 143, 200);
+  fill(triangle_color);
+  triangle(250, 350, 300, 263, 350, 350);
 }
 ```
+
+![Coloring](coloring_example.PNG)
 
 p5.Color
 alpha()
@@ -104,21 +143,16 @@ lightness()
 red()
 saturation()
 
-Megjelenítés
-background()
+#### Megjelenítés
+
 fill()
 noFill()
 noStroke()
 stroke()
 
 clear()
-    erase()
-    noErase()
-
-
-#### Szín
-#### Szín mód
-####
+erase()
+noErase()
 
 ### Alakzatok (Shapes)
 
