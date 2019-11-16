@@ -6,38 +6,36 @@ bajlódnunk.
 
 Az alábbi fejezetben nem megyünk bele a színek pontos részleteibe. Előszóban annyit, hogy
 amikor valami színét állítjuk a jelenlegi fejezetben akkor azt mindig három értékkel fogjuk
-megtenni. **RGB** azaz piros, zöld és kék megadásával. Erről és a színek egyéb sajátosságairól
-bővebben a következő fejezetben.
+megtenni. **RGB** azaz piros, zöld és kék színek intenzitásának megadásával. Erről és a színek
+egyéb sajátosságairól bővebben a következő fejezetben.
 
 A szemfülesek kiszúrhatják azt is, hogy nem mindenhol egyeznek meg az itt közölt
-paraméterek a referenciában fellelhetőekkel. Ez elsősorban azért van, mert ebben a fejezetben
-kizárólag 2D-s rajzolással foglalkozunk és a nem közölt függvények már 3D-s rajzoláshoz
-szükségesek.
+függvények és azok paraméterei a referenciában fellelhetőekkel. Ez elsősorban azért van,
+mert ebben a fejezetben kizárólag 2D-s rajzolással foglalkozunk és a nem közölt függvények
+már 3D-s rajzoláshoz szükségesek.
 
-### createCanvas
-
-[Ez](https://p5js.org/reference/#/p5/createCanvas) lesz a függvény amit mindig pontosan egyszer
-meg kell hívnunk a programunk elején, mielőtt bármit is ki szeretnénk rajzolni a képernyőre.
-
-```JavaScript
-createCanvas(width, height, [renderer])
-```
-
-*Szögletes zárójelek* - Opcionális paramétereket szokás
-megadni szögletes zárójelek között. Ezeknek ilyen esetekben általában van egy alapértelmezett
+Az alábbiakba átvesszük a p5.js-ben fellelhető alap alakzatokat és azok megjelenítési
+módjait. Többször szembe fogunk futni **[ ]** zárójelek között megadott paraméterekkel.
+Ilyen esetekben a szögletes zárójel a paraméter opcionálisát hivatott jelezni. Ezeket
+nem a paramétereket nem muszáj megadnunk, mert ezeknek mindig lesz egy alapértelmezett
 értéke.
 
-- *width* - A vásznunk szélessége pixelekben.
-- *height* - A vásznunk magassága pixelekben.
-- *renderer* - P2D vagy WEBGL. P2D az alapértelmezett és minden két dimenziós rajzolást
-tesz elérhetővé. Minden 3D-s alakzathoz a WEBGL renderelő engine-t kell használjuk.
+### Alakzatok megjelenítés
 
-### Megjelenítés
-
-Minden alakzatnak van egy éle és egy kitöltése. Egy alakzat kitöltési színét a **fill**,
-**noFill** függvényekkel tudjuk befolyásolni.
+Minden alakzatnak van egy éle és egy kitöltése. Ezek pontos megjelenítését számos
+függvénnyel tudjuk befolyásolni. Az ebben a fejezetben megjelenő függvény
+mind globális állapotot állít. Azaz meghívásuk pontjától minden későbbi
+kirajzolandó objektumra kihatnak.
+Egy alakzat kitöltési színét a **fill**, **noFill** függvényekkel tudjuk befolyásolni.
 - **fill()** - Beállítja az alakzatok kitöltési színét.
 - **noFill()** - Kikapcsolja az alakzatok kitöltését.
+
+#### fill
+```JavaScript
+fill(color)
+```
+- *color* - A tetszőleges szín. Ennek több megadási módja lehet. Bővebben a színek
+fejezetben.
 
 Kéken kitöltött kör:
 ```JavaScript
@@ -46,6 +44,11 @@ circle(100, 100, 100);
 ```
 
 ![Kék_kör](blue_filled_circle.PNG)
+
+#### noFill
+```JavaScript
+noFill()
+```
 
 Kitöltés nélküli kör:
 ```JavaScript
@@ -59,29 +62,45 @@ Az éleket hasonló módon a **stroke**, **noStroke** függvényekkel tudjuk bef
 - **stroke()** - Beállítja milyen színűek legyenek az élek.
 - **noStroke()** - Kikapcsolja az élek megjelenítését.
 
+#### stroke
+```JavaScript
+stroke(color)
+```
+- *color* - A tetszőleges szín. Ennek több megadási módja lehet. Bővebben a színek
+fejezetben.
+
 Sárga élű kék kör:
 ```JavaScript
 fill(69, 181, 232);
 stroke(235, 140, 69);
 circle(100, 100, 100);
 ```
+
 ![Éllel](stroke.PNG)
 
-Él nélkül:
+#### noStroke
+```JavaScript
+noStroke()
+```
+
+Él nélküli kör:
 ```JavaScript
 fill(69, 181, 232);
 noStroke();
 circle(100, 100, 100);
 ```
 
-![Él_nélkül](no_stroke.PNG)
+![Él_nélküli_kör](no_stroke.PNG)
 
 Az éleket még három paraméterrel tudjuk befolyásolni:
 - **strokeWeight()** - Beállítja az élek vastagságát.
 - **strokeCap()** - Beállítja milyen módon legyen megjelenítve a vonalak lezáró végei.
 - **strokeJoin()** - Meghatározza hogyan jelenjen meg két vonal kereszteződése.
 
-**strokeWeight(weight)**
+#### strokeWeight
+```JavaScript
+strokeWeight(weight)
+```
 - *weight* - Az él vastagsága pixelben.
 
 Kék kör 10 pixel szélességű éllel:
@@ -93,11 +112,14 @@ circle(100, 100, 100);
 
 ![Vastag élű kör](weighted_stroke.PNG)
 
-**strokeCap(cap)**
+#### strokeCap
+```JavaScript
+strokeCap(cap)
+```
 - *cap* - A megjelenítendő vonal vég típus. Ennek három fajtája van:
  *SQUARE*, *PROJECT* és *ROUND*.
 
-Mind a három vonal vég típus fentről lefelé az alábbi sorrendben:*SQUARE*, *PROJECT* ,*ROUND*
+Mind a három vonalvég típus fentről lefelé az alábbi sorrendben:*SQUARE*, *PROJECT* ,*ROUND*
 ```JavaScript
 strokeWeight(12.0);
 strokeCap(PROJECT);
@@ -110,7 +132,10 @@ line(50, 200, 200, 200);
 
 ![Vonal végek](stroke_caps.PNG)
 
-**strokeJoin(join)**
+#### strokeJoin
+```JavaScript
+strokeJoin(join)
+```
 - *join* - Milyen módon kerüljenek megjelenítésre a vonalak metszési pontjai. Ennek
 három fajtája van:
  *MITER*, *BEVEL*, *ROUND*.
@@ -150,6 +175,7 @@ Lássuk hát mi áll a rendelkezésünkre:
 ```JavaScript
 point(x, y)
 ```
+- *x*, *y* - A pont koordinátái.
 
 Rajzoljunk egy 1 pixel nagyságú pontot. Ennek magában nem sok haszna van.
 Viszont a **strokeWeight()** és **stroke()** függvényekkel használva már jóval több
@@ -167,6 +193,9 @@ point(50, 50);
 ```JavaScript
 line(x1, y1, x2, y2)
 ```
+- *x1*, *y1* - A vonal egyik végpontja. A
+- *x2*, *y2* - A vonal másik végpontja. B
+
 Egy vonalat húzunk A pontból B-be.
 
 ```JavaScript
@@ -181,7 +210,12 @@ line(50, 50, 200, 30);
 ```JavaScript
 triangle(x1, y1, x2, y2, x3, y3)
 ```
-Egy tetszőleges háromszöget rajzolunk.
+- *x1*, *y1* - A háromszög első pontja. A
+- *x2*, *y2* - A háromszög második pontja. B
+- *x3*, *y3* - A háromszög harmadik pontja. C
+
+Egy tetszőleges háromszöget rajzolunk. Ahol a pontok bejárási iránya az óramutató
+járásával ellentétes. Azaz az élek összekötésének sorrendje A-B-C-A.
 
 ```JavaScript
 stroke(209, 70, 200);
@@ -195,6 +229,8 @@ triangle(50, 50, 150, 70, 72, 130);
 ```JavaScript
 square(x, y, s)
 ```
+- *x*, *y* - A négyzet bal felső sarka.
+- *s* - A négyzet oldalhosszúsága.
 
 Tetszőleges négyzetet rajzol ahol, **x** és **y** a négyzet bal felső sarka, **s** pedig az
 oldalhosszúsága.
@@ -211,6 +247,9 @@ square(50, 50, 80);
 ```JavaScript
 rect(x, y, w, h)
 ```
+- *x*, *y* - A téglalap bal felső sarka.
+- *w* - A téglalap szélessége.
+- *h* - A téglalap magassága.
 
 Tetszőleges téglalapot rajzol ahol, **x** és **y** a négyzet bal felső sarka, **w** a
 szélessége, **h** pedig a magassága.
@@ -226,12 +265,14 @@ rect(50, 50, 100, 60);
 ```JavaScript
 quad(x1, y1, x2, y2, x3, y3, x4, y4)
 ```
-- *x1*, *y1* - Első pont.
-- *x2*, *y2* - Második pont.
-- *x3*, *y3* - Harmadik pont.
-- *x4*, *y4* - Negyedik pont.
+- *x1*, *y1* - Első pont. A
+- *x2*, *y2* - Második pont. B
+- *x3*, *y3* - Harmadik pont. C
+- *x4*, *y4* - Negyedik pont. D
+
 Tetszőleges négyszöget rajzol ahol mind a négy pont pontos helyzetét meg tudjuk
-határozni.
+határozni. A pontok bejárási iránya az óramutató járásával ellentétes.
+Azaz az élek összekötésének sorrendje A-B-C-D-A.
 
 ```JavaScript
 strokeWeight(12.0);
