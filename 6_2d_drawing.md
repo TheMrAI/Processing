@@ -44,6 +44,7 @@ Kéken kitöltött kör:
 fill(69, 181, 232);
 circle(100, 100, 100);
 ```
+
 ![Kék_kör](blue_filled_circle.PNG)
 
 Kitöltés nélküli kör:
@@ -51,6 +52,7 @@ Kitöltés nélküli kör:
 noFill();
 circle(100, 100, 100);
 ```
+
 ![Üres_kör](no_fill_circle.PNG)
 
 Az éleket hasonló módon a **stroke**, **noStroke** függvényekkel tudjuk befolyásolni.
@@ -71,6 +73,7 @@ fill(69, 181, 232);
 noStroke();
 circle(100, 100, 100);
 ```
+
 ![Él_nélkül](no_stroke.PNG)
 
 Az éleket még három paraméterrel tudjuk befolyásolni:
@@ -80,12 +83,14 @@ Az éleket még három paraméterrel tudjuk befolyásolni:
 
 **strokeWeight(weight)**
 - *weight* - Az él vastagsága pixelben.
+
 Kék kör 10 pixel szélességű éllel:
 ```JavaScript
 fill(69, 181, 232);
 strokeWeight(10);
 circle(100, 100, 100);
 ```
+
 ![Vastag élű kör](weighted_stroke.PNG)
 
 **strokeCap(cap)**
@@ -102,6 +107,7 @@ line(50, 150, 200, 150);
 strokeCap(ROUND);
 line(50, 200, 200, 200);
 ```
+
 ![Vonal végek](stroke_caps.PNG)
 
 **strokeJoin(join)**
@@ -119,6 +125,7 @@ rect(200, 50, 100, 50);
 strokeJoin(ROUND);
 rect(350, 50, 100, 50);
 ```
+
 ![Metszési típusok](stroke_join_types.PNG)
 
 ### Alakzatok (Shapes)
@@ -143,6 +150,7 @@ Lássuk hát mi áll a rendelkezésünkre:
 ```JavaScript
 point(x, y)
 ```
+
 Rajzoljunk egy 1 pixel nagyságú pontot. Ennek magában nem sok haszna van.
 Viszont a **strokeWeight()** és **stroke()** függvényekkel használva már jóval több
 lehetőségünk lesz vele.
@@ -152,6 +160,7 @@ stroke(58, 181, 97);
 strokeWeight(30);
 point(50, 50);
 ```
+
 ![Pont](point.PNG)
 
 #### Line
@@ -165,6 +174,7 @@ stroke(181, 56, 83);
 strokeWeight(10);
 line(50, 50, 200, 30);
 ```
+
 ![Vonal](line.PNG)
 
 #### Triangle
@@ -176,35 +186,40 @@ Egy tetszőleges háromszöget rajzolunk.
 ```JavaScript
 stroke(209, 70, 200);
 strokeWeight(10);
-triangle(50, 50, 320, 200, 150, 25);
+triangle(50, 50, 150, 70, 72, 130);
 ```
+
 ![Háromszög](triangle.PNG)
 
 #### Square
 ```JavaScript
 square(x, y, s)
 ```
+
 Tetszőleges négyzetet rajzol ahol, **x** és **y** a négyzet bal felső sarka, **s** pedig az
 oldalhosszúsága.
 
 ```JavaScript
 stroke(79, 120, 209);
 strokeWeight(10);
-square(50, 50, 50);
+square(50, 50, 80);
 ```
+
 ![Négyzet](square.PNG)
 
 #### Rect
 ```JavaScript
 rect(x, y, w, h)
 ```
+
 Tetszőleges téglalapot rajzol ahol, **x** és **y** a négyzet bal felső sarka, **w** a
 szélessége, **h** pedig a magassága.
 
 ```JavaScript
 fill(150, 155, 17);
-rect(40, 30, 70, 20);
+rect(50, 50, 100, 60);
 ```
+
 ![Téglalap](rectangle.PNG)
 
 #### Quad
@@ -220,8 +235,9 @@ határozni.
 
 ```JavaScript
 strokeWeight(12.0);
-quad(50, 50, 50, 100, 210, 200, 150, 30);
+quad(50, 50, 50, 100, 180, 120, 150, 30);
 ```
+
 ![Négyszög](quad.PNG)
 
 #### Circle
@@ -234,6 +250,7 @@ circle(x, y, d)
 ```JavaScript
 circle(100, 100, 100);
 ```
+
 ![Kör](circle.PNG)
 
 #### Ellipse
