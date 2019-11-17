@@ -9,7 +9,7 @@ A számos módszer közül is az **RGBA**-ra fogunk fókuszálni, mert az a legg
 
 A p5.js-ben három színtér közül tudunk választani. Mindegyikükben egy adott színt
 megadása maximum négy paraméterrel fog történni. Viszont e négy paraméternek
-pontos jelentése mindig csak magától a színtértől fog függeni.
+pontos jelentése mindig csak magától a színtértől fog függni.
 
 #### colorMode()
 A színtér kiválasztását a **colorMode()** függvénnyel tudjuk megtenni.
@@ -192,7 +192,7 @@ rect(200, 50, 100, 50);
 ![Azonos érték különböző színtérben](same_values_different_color_space.PNG)
 
 Ezen felül még számos függvényt érünk el. Amelyek mindegyike a minél kényelmesebb
-használatot hivatott elősegíteni. Segítségükkel meg azt is nézni mik lennének
+használatot hivatott elősegíteni. Segítségükkel meg azt is meg tudjuk nézni mik lennének
 az adott szín pontos értékei egy másik színtérben.
 - **red()** - Visszaadja a piros komponens intenzitását az adott színtérben.
 - **green()** - Visszaadja a zöld komponens intenzitását az adott színtérben.
@@ -218,7 +218,7 @@ print("Scaled Green: " + green(rectangle_color));
 print("Scaled Blue: " + blue(rectangle_color));
 print("Scaled Alpha: " + alpha(rectangle_color));
 ```
-Először is az alapértelmezett **RGB** színteret állítjuk meg ahol minden komponens
+Először is az alapértelmezett **RGB** színteret állítjuk be ahol minden komponens
 0 és 255 közti értéket vehet fel. Létrehozunk egy p5.Color objektumot és kiíratjuk
 a komponenseit. Ahogy látszik pontosan ugyan azokat az értékeket kaptuk vissza amiket
 beállítottunk.
