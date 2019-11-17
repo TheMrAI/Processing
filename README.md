@@ -11,3 +11,5 @@ Anyagok:
 3. [Példaprogram és a szerkesztő](3_editor.md)
 4. [Egér kezelés](4_mouse.md)
 5. [Billentyűzet](5_keyboard.md)
+6. [2D rajzolás](6_2d_drawing.md)
+7. [Színek](7_colors.md)
