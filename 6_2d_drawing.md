@@ -94,8 +94,8 @@ circle(100, 100, 100);
 
 Az éleket még három paraméterrel tudjuk befolyásolni:
 - **strokeWeight()** - Beállítja az élek vastagságát.
-- **strokeCap()** - Beállítja milyen módon legyen megjelenítve a vonalak lezáró végei.
-- **strokeJoin()** - Meghatározza hogyan jelenjen meg két vonal kereszteződése.
+- **strokeCap()** - Beállítja milyen módon legyenek megjelenítve a vonalak lezáró végei.
+- **strokeJoin()** - Meghatározza hogyan jelenjen meg két vonal metszete.
 
 #### strokeWeight
 ```JavaScript
@@ -157,7 +157,7 @@ rect(350, 50, 100, 50);
 
 Számos 2D-s alakzat áll a rendelkezésünkre. Segítségükkel szinte bármit le tudunk majd
 rajzolni. Amit pedig nem azokra is ad számos megoldási lehetőséget a p5.js, mint
-az ívek és a vertexek használata. Viszont ezekkel majd csak egy másik fejezetben fogunk
+az ívek és a vertexek használatát. Viszont ezekkel majd csak egy másik fejezetben fogunk
 megismerkedni. A gyors rajzoláshoz az itt tárgyalt alakzatok bőven elégségesek.
 Lássuk hát mi áll a rendelkezésünkre:
 
