@@ -122,5 +122,3 @@ Például:
 3. Növeljük meg a koncentrikus körök távolságát
 4. Toljuk el az origót
 5. Meg tudjuk-e mondani, hogyan keletkeznek a színek
-
-[Processing](2_processing.md) - [Egér kezelés](4_mouse.md)

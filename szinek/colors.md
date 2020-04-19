@@ -12,10 +12,13 @@ megadása maximum négy paraméterrel fog történni. Viszont e négy paraméter
 pontos jelentése mindig csak magától a színtértől fog függni.
 
 #### colorMode()
+
 A színtér kiválasztását a **colorMode()** függvénnyel tudjuk megtenni.
+
 ```JavaScript
 colorMode(mode, max1, max2, max3, [maxA])
 ```
+
 - *mode* - A színtér típusa. Lehet RGB, HSB és HSL.  
 - *max1* - A piros szín vagy az árnyalat maximális értéke.
 - *max2* - A zöld szín vagy a telitettség maximális értéke.
@@ -26,6 +29,7 @@ Ezeket az értékeket ritkán lesz szükséges átállítani. Olyankor pedig ér
 tudni a másik két színtérről. Amik tárgyalása túlmutat ezen leírás keretein.
 
 Három fő színtér áll rendelkezésünkre:
+
 - **RGB**
 - **HSB**
 - **HSL**
@@ -39,6 +43,7 @@ olvasóra bízzuk.
 
 Az **RGB** színteret és az általa leírható színeket is gyakran szokás **RGB**-nek hívni.
 Elemei:
+
 - **R** - red, piros komponens, értéktartománya: 0 - 255
 - **G** - green, zöld komponens, értéktartománya: 0 - 255
 - **B** - blue, kék komponens, értéktartománya: 0 - 255
@@ -52,6 +57,7 @@ képesek. Számos online felületen próbálhatunk ki különböző színeket. K
 Ez a triumvirátus esetenként ki szokott egészülni még egy **A** értékkel is amit *aplha*
 értéknek hívunk. Ilyenkor egy **RGBA** színről beszélünk. Az **A** csupán annyit határoz meg,
 hogy az adott szín mennyire áttetsző.
+
 - **A** - alpha, áttetszőség, értéktartománya: 0 - 255
 
 A 0-ás alpha érték a teljes áttetszőséget jelenti, ilyenkor lényegében nem látjuk tovább
@@ -59,6 +65,7 @@ az adott színt, csak ami esetleg mögötte van. A 255 pedig az alapértelmezett
 a meghatározott színt teljes egészében megtartja.
 
 Egy összetett példa:
+
 ```JavaScript
 function setup() {
   createCanvas(400, 400);
@@ -86,6 +93,7 @@ function draw() {
 ### Színek megadása
 
 Szineket lényegében 4 féleképpen tudunk megadni azokon a helyeken ahol az elvárt.
+
 - 1 vagy 2 értékkel
 - 3 vagy 4 értékkel
 - szövegesen
@@ -100,9 +108,11 @@ RGB értékét nem ismerjük, de mondjuk a szöveges megnevezését igen.
 Ilyenkor a szürke 256 árnyalata között állítjuk be az értéket. Ahol *0* a fekete
 , míg *255* a fehér lesz. Az opcionális másodlagos paraméter pedig ennek az árnyalatnak
 az *alpha* értéke lesz.
+
 ```JavaScript
 background(56);
 ```
+
 ```JavaScript
 background(56, 125);
 ```
@@ -112,9 +122,11 @@ background(56, 125);
 Ebben az esetben megadjuk a szín minden egyes elemét. Az alkalmazott színtértől függ
 pontosan mit fog a három paraméter jelenteni. **RGB** esetén a piros, zöld és kék
 komponenseket és az opcionális alpha értéket.
+
 ```JavaScript
 background(153, 153, 0);
 ```
+
 ```JavaScript
 background(253, 216, 53, 50);
 ```
@@ -122,9 +134,11 @@ background(253, 216, 53, 50);
 Amennyiben **RGB** színtérrel dolgozunk és mind a piros, zöld és kék komponens intenzitását
 ugyan azon az értéken tartjuk, úgy visszakapjuk a szürke árnyalatait. Ilyen esetekben
 jóval kényelmesebb az ehhez tartozó specializációt használni, azaz csak 1 értéket megadni.
+
 ```JavaScript
 background(56, 56, 56);
 ```
+
 ```JavaScript
 background(56);
 ```
@@ -134,12 +148,15 @@ background(56);
 Ez a mód minden RGB, RGBA és Hexa CSS szín szöveges reprezentációját illetve minden nevesített
 színt elfogad.
 Például:
+
 ```JavaScript
 background("lime")
 ```
+
 ```JavaScript
 background("#00FF00")
 ```
+
 ugyan azt az eredményt fogja adni.
 
 #### p5.Color objektummal
@@ -147,12 +164,15 @@ ugyan azt az eredményt fogja adni.
 A p5.js beépített szín osztálya amelyben bármely színt el tudunk tárolni.
 Létrehozásához csupán a **color()** függvényt kell meghívnunk a fentebb leírt
 módszerek egyikével.
+
 ```JavaScript
 color(color)
 ```
+
 - *color* - A fent felsorolt három módszer közül egy tetszőleges opció.
 
 Egy p5.Color létrehozása:
+
 ```JavaScript
 let ultramarine_blue = color(18, 10, 143);
 ```
@@ -164,6 +184,7 @@ színt tudunk benne eltárolni a beállított színtértől függően. Ezt a sz�
 színtérben ugyan úgy fogjuk tudni használni, mert ugyan azt fogja majd jelenteni.
 Legegyszerűbben egy példán keresztül tudjuk szemléltetni ennek jelentőségét.
 Először is nézzünk meg két négyzetet ugyan azzal a színnel kirajzolva:
+
 ```JavaScript
 colorMode(RGB);
 let rectangle_color = color(29, 228, 32);
@@ -194,6 +215,7 @@ rect(200, 50, 100, 50);
 Ezen felül még számos függvényt érünk el. Amelyek mindegyike a minél kényelmesebb
 használatot hivatott elősegíteni. Segítségükkel meg azt is meg tudjuk nézni mik lennének
 az adott szín pontos értékei egy másik színtérben.
+
 - **red()** - Visszaadja a piros komponens intenzitását az adott színtérben.
 - **green()** - Visszaadja a zöld komponens intenzitását az adott színtérben.
 - **blue()** - Visszaadja a kék komponens intenzitását az adott színtérben.
@@ -205,6 +227,7 @@ az adott szín pontos értékei egy másik színtérben.
 - **lerpColor()** - Összemossa a színeket.
 
 Nézzük meg mit is jelent az aktuális színtér egy példán keresztül:
+
 ```JavaScript
 colorMode(RGB, 255);
 let rectangle_color = color(29, 228, 32);
@@ -218,6 +241,7 @@ print("Scaled Green: " + green(rectangle_color));
 print("Scaled Blue: " + blue(rectangle_color));
 print("Scaled Alpha: " + alpha(rectangle_color));
 ```
+
 Először is az alapértelmezett **RGB** színteret állítjuk be ahol minden komponens
 0 és 255 közti értéket vehet fel. Létrehozunk egy p5.Color objektumot és kiíratjuk
 a komponenseit. Ahogy látszik pontosan ugyan azokat az értékeket kaptuk vissza amiket
@@ -226,7 +250,8 @@ Ezután egy olyan térbe váltunk ahol még mindig **RGB** színeket használunk
 már csak 0 - 1 közötti értéket vehetnek fel az egyes komponensek. Majd kiírjuk
 az előzőleg létrehozott szín komponenseit. Ahogy látszik a szín nem változott
 csak az hogy az adott környezetben éppen mik volnának a komponensei pontos értékei.
-```
+
+``` bash
 Red: 29
 Green: 228
 Blue: 32
@@ -240,6 +265,7 @@ Scaled Alpha: 1
 Amennyiben egy olyan színtérbéli értéket szeretnénk elérni ami éppen nem része az aktuális
 színtérnek, azt úgy fogjuk megkapni mintha annak a színtérnek az alapértelmezett
 beállításait használnánk.
+
 ```JavaScript
 colorMode(RGB, 255);
 let rectangle_color = color(29, 228, 32);
@@ -253,7 +279,8 @@ print("Saturation: " + saturation(rectangle_color));
 print("Brightness: " + brightness(rectangle_color));
 print("Lightness: " + lightness(rectangle_color));
 ```
-```
+
+``` bash
 Hue: 120.90452261306534
 Saturation: 78.65612648221344
 Brightness: 89.41176470588236
@@ -269,6 +296,7 @@ Lightness: 50.3921568627451
 ```JavaScript
 lerpColor(c1, c2, amt)
 ```
+
 - *c1* - A színskála egyik végpontja.
 - *c2* - A színskála másik végpontja.
 - *amt* - A színskáláról honnét szeretnénk a színt kapni. 0 - 1 közötti értéket vehet fel.
@@ -290,5 +318,3 @@ rect(350, 50, 100, 50);
 ```
 
 ![Interpolált színek](lerpColor.PNG)
-
-[2D rajzolás](6_2d_drawing.md)

@@ -331,5 +331,3 @@ arc(400, 100, 100, 70, 0, HALF_PI*3, OPEN);
 ```
 
 ![Arc](arc.PNG)
-
-[Billentyűzet](5_keyboard.md) - [Színek](7_colors.md)

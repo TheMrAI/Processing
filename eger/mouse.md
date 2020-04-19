@@ -194,5 +194,3 @@ delta: 3
 <constructor>: "WheelEvent"
 ```
 Innen láthatjuk van egy delta nevű változónk ami görgetéskor változtatja az aktuális értékét.
-
-[Példaprogram és a szerkesztő](3_editor.md) - [Billentyűzet](5_keyboard.md)
