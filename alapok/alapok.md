@@ -171,5 +171,3 @@ fogunk használni. Mint például a print, println, text, stroke etc...
 Ez az összes fogalom, amit egy hosszú ideig ismerni érdemes.
 Amíg ezek a fogalmak ülepszenek, megismerkedhetünk a Processing nyelv általunk
 alkalmazott formájával: a *p5.js*-el.
-
-[Processing](2_processing.md)

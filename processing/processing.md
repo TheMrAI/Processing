@@ -137,5 +137,3 @@ Mindig a megfelelő referenciát kutassuk:
 ### Hogyan tovább
 Most, hogy tudjuk mi a **Processing** és mi a **p5.js**, és mik a különbségek köztük, csináljunk
 is végre valamit.
-
-[Alapok](1_alapok.md) - [Példaprogram és a szerkesztő](3_editor.md)
