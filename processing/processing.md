@@ -4,7 +4,7 @@ A **Processing** egy nagyon kényelmesen és könnyen használható nyelv, amive
 tapasztalattal, szakértelemmel is lehet valami kézzelfoghatót létrehozni. Ez a legtöbb
 programozási nyelvről a legkevésbé sem mondható el. Sokukhoz heteket kell csak az
 elmélettel foglalkozni mielőtt megpróbálkozhatunk valami hasznos létrehozásában.
-A **Processinggel** ez nincs így, és a kezdéshez csupán csak az [Alapok](1_alapok.md) fejezetben leírtakra lesz szükségünk.
+A **Processinggel** ez nincs így, és a kezdéshez csupán csak az [Alapok](../alapok/alapok.md) fejezetben leírtakra lesz szükségünk.
 
 A források nyelve mind angol, mert a programozás, illetve a tudomány nyelve általánosságban
 az angol. Ezért a későbbiekben érdemes az angol nyelvre fókuszálnunk, és amikor csak
